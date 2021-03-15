@@ -4,6 +4,7 @@ from math import sin, cos
 def jednoliko_gibanje(F,m,t):
     a = F/m
     dt = 0.5
+    N = t*2
     v=0
     x=0
     t=0
@@ -12,7 +13,7 @@ def jednoliko_gibanje(F,m,t):
     pomak=[]
     vrijeme=[]
 
-    for i in range(20):
+    for i in range(N):
         v= v + a*dt
         x = x + v*dt
         t += dt
@@ -38,17 +39,16 @@ def kosi_hitac(v0,theta,t):
     vy=v0*sin(theta)
     y=0
     x=0
-    t=0
     dt=0.5
     g=9.81
     N=t*2
     pomak_x=[]
     pomak_y=[]
     vrijeme=[]
-
     for i in range(N):
-        x= vx*t
-        y = vy*t-0.5*g*(t**2)
+        x=x + vx*dt
+        vy=vy - g*t
+        y=y + vy*dt
         t += dt
         pomak_x.append(x)
         pomak_y.append(y)
