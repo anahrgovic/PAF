@@ -15,9 +15,10 @@ pomak_x=[]
 pomak_y=[]
 vrijeme=[]
 
-for i in range(20):
-    x = x + v*dt
-    v= v + a*dt
+for i in range(100):
+    x = x + vx*dt
+    vy= vy - g*dt
+    y = y + vy*dt
     t += dt
     pomak_x.append(x)
     pomak_y.append(y)

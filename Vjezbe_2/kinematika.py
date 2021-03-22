@@ -3,8 +3,8 @@ from math import sin, cos
 
 def jednoliko_gibanje(F,m,t):
     a = F/m
-    dt = 0.5
-    N = t*2
+    dt = 0.1
+    N = t*10
     v=0
     x=0
     t=0
