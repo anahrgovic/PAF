@@ -12,4 +12,5 @@ def derivacija(func,x1,x2,h):
         lista.append(d)
     return xlista,lista
 
+
     

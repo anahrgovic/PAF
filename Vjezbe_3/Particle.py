@@ -50,6 +50,7 @@ class Particle:
             self.__move(self.dt)
             if self.y <=0:
                 break
+        return max(self.x_)
 
     def plot_trajectory(self):
         plt.plot(self.x_,self.y_)
