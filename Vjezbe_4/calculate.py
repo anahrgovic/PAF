@@ -52,7 +52,7 @@ for i in range(1,20):
     d=dx*i
     d_l.append(d)
 for d in d_l:
-    g_m,d_m=calculus.integr(f1,a,b,d)
+    d_m,g_m=calculus.integr(f1,a,b,d)
     trapez=calculus.integr_tr(f1,a,b,d)
     analit=i_f1(b)-i_f1(a)
     gornja_l.append(g_m)
@@ -65,8 +65,8 @@ for d in d_l:
 #print(calculus.integr(f1,a,b,1))
 #print(calculus.integr_tr(f1,a,b,1))
 #plt.plot()
-plt.plot(d_l,gornja_l, '.')
-plt.plot(d_l,donja_l, '.')
-plt.plot(d_l,trapezno, '.')
+#plt.plot(gornja_l,d_l, '.')
+plt.plot(donja_l,d_l, '.')
+#plt.plot(d_l,trapezno, '.')
 plt.plot(d_l,analiticko_r)
 plt.show()
