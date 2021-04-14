@@ -19,11 +19,14 @@ def integr(func,a,b,N):
     x_gornja=a
     x_donja=a+dx
     for i in range(N):
+        #print(x_donja,x_gornja)
         gornja +=func(x_gornja)*dx
         donja +=func(x_donja)*dx
+        #print(gornja,donja)
         x_gornja +=dx
         x_donja +=dx
-    return x_gornja, x_donja
+        
+    return gornja, donja
 
 def integr_tr(func,a,b,N):
     dx=(b-a)/N

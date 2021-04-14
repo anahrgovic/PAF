@@ -60,13 +60,15 @@ for d in d_l:
     trapezno.append(trapez)
     analiticko_r.append(analit)
 
-
-
+#d_m,g_m=calculus.integr(f1,a,b,100)
+#analit=i_f1(b)-i_f1(a)
+#print(d_m,g_m)
+#print(analit)
 #print(calculus.integr(f1,a,b,1))
 #print(calculus.integr_tr(f1,a,b,1))
 #plt.plot()
-#plt.plot(gornja_l,d_l, '.')
-plt.plot(donja_l,d_l, '.')
-#plt.plot(d_l,trapezno, '.')
+plt.plot(d_l,gornja_l, '.')
+plt.plot(d_l,donja_l, '.')
+plt.plot(d_l,trapezno, '.')
 plt.plot(d_l,analiticko_r)
 plt.show()
