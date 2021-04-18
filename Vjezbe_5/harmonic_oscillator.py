@@ -70,25 +70,45 @@ class HarmonicOscillator:
             self.t_lista.append(self.t)
         return self.x_lista,self.t_lista
 
+    def period_titr(self,dt,t):
+        T=0
+        self.oscillate(dt,t)
+        
+        for x in self.x_lista:
+            if x > 0:
+                T+=dt
+            else:
+                break 
+        #print(self.x)              #nije mi jasno zašto mi je self.x negativan? zbog toga mi je T=0
+        print(4*T)
+
+    def analit_period(self):
+        T=2*math.pi*math.sqrt(self.m/self.k)
+        print(T)
+
    
         
         
         
 
     
-        
-h1=HarmonicOscillator(10,0.1,0.3,0)
+       
+#h1=HarmonicOscillator(10,0.1,0.3,0)
+#ZADATAK 1 
+#x−t,v−t i a−t graf
 #h1.oscillate(0.01,2)
 #h1.plot_trajectory(0.01,2)
-h1.preciznost(0.01)
-h1.reset()
-h1=HarmonicOscillator(10,0.1,0.3,0)
-h1.preciznost(0.05)
-h1.reset()
-h1=HarmonicOscillator(10,0.1,0.3,0)
-h1.preciznost(0.1)
-h1.reset()
-h1=HarmonicOscillator(10,0.1,0.3,0)
-x,t= h1.analiticki(0.01)
-plt.plot(t,x)
-plt.show()
+
+#PRECIZNOST
+#h1.preciznost(0.01)
+#h1.reset()
+#h1=HarmonicOscillator(10,0.1,0.3,0)
+#h1.preciznost(0.05)
+#h1.reset()
+#h1=HarmonicOscillator(10,0.1,0.3,0)
+#h1.preciznost(0.1)
+#h1.reset()
+#h1=HarmonicOscillator(10,0.1,0.3,0)
+#x,t= h1.analiticki(0.01)
+#plt.plot(t,x)
+#plt.show()
