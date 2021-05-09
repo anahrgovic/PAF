@@ -43,6 +43,18 @@ class Particle
             
             std::cout << x << std::endl;
             }
+
+        double time(double dt){
+            double t;
+            t=0;
+            while (y>=0);
+            float g=9.81;
+            x=x + vx*dt;
+            vy=vy - g*dt;
+            y=y + vy*dt;
+            t=t+dt;
+            std::cout << t << std::endl;
+        }
 };
         
         
@@ -53,6 +65,6 @@ int main()
     Particle p1(10,60,0,0);
     //p1.__move(0.5);  
     p1.range(0.01);    
-
+    p1.time(0.01)
     return 0;  
 }
