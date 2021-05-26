@@ -86,22 +86,22 @@ class Projectile:
         self.t_.append(self.t_[i-1] + self.dt)
 
         k1vx = (self.__a(self.x_[i-1], self.v_x[i-1], self.t_[i-1]))*self.dt
-        k1vy = (9.81 + self.__a(self.y_[i-1], self.v_y[i-1], self.t_[i-1]))*self.dt
+        k1vy = (-9.81 + self.__a(self.y_[i-1], self.v_y[i-1], self.t_[i-1]))*self.dt
         k1x = self.v_x[i-1] * self.dt
         k1y = self.v_y[i-1] * self.dt
 
         k2vx = (self.__a(self.x_[i-1]+k1x/2, self.v_x[i-1]+k1vx/2, self.t_[i-1]+self.dt/2))*self.dt
-        k2vy = (9.81 + self.__a(self.y_[i-1]+k1y/2, self.v_y[i-1]+k1vy/2, self.t_[i-1]+self.dt/2))*self.dt
+        k2vy = (-9.81 + self.__a(self.y_[i-1]+k1y/2, self.v_y[i-1]+k1vy/2, self.t_[i-1]+self.dt/2))*self.dt
         k2x = (self.v_x[i-1]+k1vx/2) * self.dt
         k2y = (self.v_y[i-1]+k1vy/2) * self.dt
 
         k3vx = (self.__a(self.x_[i-1]+k2x/2, self.v_x[i-1]+k2vx/2, self.t_[i-1]+self.dt/2))*self.dt
-        k3vy = (9.81 + self.__a(self.y_[i-1]+k2y/2, self.v_y[i-1]+k2vy/2, self.t_[i-1]+self.dt/2))*self.dt
+        k3vy = (-9.81 + self.__a(self.y_[i-1]+k2y/2, self.v_y[i-1]+k2vy/2, self.t_[i-1]+self.dt/2))*self.dt
         k3x = (self.v_x[i-1]+k2vx/2) * self.dt
         k3y = (self.v_y[i-1]+k2vy/2) * self.dt
 
         k4vx = (self.__a(self.x_[i-1]+k3x/2, self.v_x[i-1]+k3vx/2, self.t_[i-1]+self.dt/2))*self.dt
-        k4vy = (9.81 + self.__a(self.y_[i-1]+k3y/2, self.v_y[i-1]+k3vy/2, self.t_[i-1]+self.dt/2))*self.dt
+        k4vy = (-9.81 + self.__a(self.y_[i-1]+k3y/2, self.v_y[i-1]+k3vy/2, self.t_[i-1]+self.dt/2))*self.dt
         k4x = (self.v_x[i-1]+k3vx/2) * self.dt
         k4y = (self.v_y[i-1]+k3vy/2) * self.dt
 
@@ -110,6 +110,7 @@ class Projectile:
 
         self.x_.append(self.x_[i-1] + (k1x + 2*k2x + 2*k3x + k4x)/6)
         self.y_.append(self.y_[i-1] + (k1y + 2*k2y + 2*k3y + k4y)/6)
+        print(self.y_[i])
     
 
     def evolve_RK(self):
