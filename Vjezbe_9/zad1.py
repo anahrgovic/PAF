@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot as plt
 
 class BungeeJumping:
-    def __init__(self,m,k,v0,h0,l,rho=1,Cd=1,A=1,dt=0.01,AirResistance = False):
+    def __init__(self,m,k,v0,h0,l,rho=1,Cd=1,A=1,dt=0.001,AirResistance = True):
         self.m=m 
         self.k=k
         self.l=l
@@ -63,7 +63,7 @@ class BungeeJumping:
         else: 
             akc_el = 0
         if self.AirResistance:
-            akc_AR = -(abs(self.v)*self.v0*self.rho*self.Cd*self.A)/(2*self.m)
+            akc_AR = -(abs(self.v0)*self.v0*self.rho*self.Cd*self.A)/(2*self.m)
         else:
             akc_AR = 0
         a = -9.81 + akc_el + akc_AR
@@ -72,10 +72,14 @@ class BungeeJumping:
     def energija(self):
         dh = self.h0 - self.l - self.h
         if dh > 0:
-            self.Eel = (1/2)*self.k*dh*dh
-        #else:
-        #    E = 0
-        #return E
+            self.Ee = (1/2)*self.k*dh*dh
+        else:
+            Ee = 0
+        self.U=self.m * 9.81 * self.h
+        self.K = 0.5*self.m*(self.v0)**2
+        self.E = self.U + self.K + self.Ee
+        #return self.E
+
     
     def __skok(self):
         self.a = self.akceleracija()
@@ -118,7 +122,7 @@ plt.legend(loc = "upper right", prop={'size': 10} )
 
 BJ.reset()
 
-BJ=BungeeJumping(100,20,0,250,50)    
+BJ=BungeeJumping(100,20,0,250,50,True)    
 BJ.skok(50)
 
 plt.subplot(2,2,3)
