@@ -1,33 +1,21 @@
-import numpy as np
+import particle as part
 import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
+import numpy as np
 
-class particle:
-    def __init__(self,E,B,v,m,q,dt=0.01):
-        self.E=E
-        self.B=B
-        self.v=v
-        self.m=m
-        self.q=q
-        self.dt=dt
-        self.r = np.array((0,0,0))
-        self.r_ = []
+p1=part.particle(np.array((0,0,0)),np.array((0,0,1)),np.array((0.1,0.1,0.1)),1,1)
+p1.euler(20)
 
-    def reset(self):
-        del self.E
-        del self.B
-        del self.v
-        del self.m
-        del self.q
-        del self.dt
+p2=part.particle(np.array((0,0,0)),np.array((0,0,1)),np.array((0.1,0.1,0.1)),1,-1)
+p2.euler(20)
 
-    def move(self):
-        a = (self.q/self.m)*(self.E+ np.cross(self.v,self.B))
-        self.v = self.v + a*self.dt
-        self.r = self.r + self.v*self.dt
-        self.r_.append(self.r)
-        print(a,self.v,self.r)
+ax = plt.axes(projection = "3d")
 
-p1=particle(np.array((0,0,0)),np.array((0,0,1)),np.array((0.1,0.1,0.1)),1,1)
-p1.move()
-      
-
+ax.plot3D(p2.r_x,p2.r_y,p2.r_z, c = "blue", label = "elektron")
+ax.plot3D(p1.r_x,p1.r_y,p1.r_z, c = "red", label = "pozitron")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("z")
+ax.view_init(30,30)
+plt.legend()
+plt.show()
