@@ -1,10 +1,10 @@
-from Domaci_5.zad1 import konst_p
+
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
 class particle:
-    def __init__(self,E,v,m,q,dt=0.01,func):
+    def __init__(self,E,v,m,q,func,dt=0.01):
         self.t=0
         self.E=E
         self.func=func
@@ -40,12 +40,15 @@ class particle:
         
 
     def move(self):
+        self.B=self.func(self.t)
+        self.t += self.dt
         self.v = self.v + self.a(self.v,self.B)*self.dt
         self.r = (self.r + self.v*self.dt)
         self.r_x.append(self.r[0])
         self.r_y.append(self.r[1])
         self.r_z.append(self.r[2])
-        self.t += self.dt
+        
+        #print(self.B[2])
 
     def euler(self,t):
         while self.t <= t:
@@ -54,6 +57,7 @@ class particle:
 
     def __move_RK(self):
         self.t += self.dt
+        self.B=self.func(self.t)
         k1v = self.a(self.v,self.B)*self.dt
         k1r = self.v * self.dt
         k2v = (self.a((self.v + k1v/2),self.B)*self.dt)
@@ -66,10 +70,11 @@ class particle:
         self.v=self.v + (k1v + 2*k2v + 2*k3v + k4v)/6
  
         self.r=self.r + (k1r + 2*k2r + 2*k3r + k4r)/6
+
         self.r_x.append(self.r[0])
         self.r_y.append(self.r[1])
-
         self.r_z.append(self.r[2])
+        #print(self.B[2])
 
     def evolve_RK(self,t):
         while self.t <=t:
