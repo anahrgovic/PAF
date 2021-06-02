@@ -32,14 +32,14 @@ ax.set_zlabel("z")
 ax.set_title("usporedba polja")
 ax.view_init(30,30)
 plt.legend(loc = "upper center")
-#plt.show()
+plt.show()
 
-p2=part.particle(np.array((0,0,0)),np.array((0,0,1)),np.array((0.1,0.1,0.1)),1,1,promj_p)
+p2=part.particle(np.array((0,0,0)),np.array((0.1,0.1,0.1)),1,1,promj_p)
 x3,y3,z3=p2.evolve_RK(20)
 
 
 ax = plt.axes(projection = "3d")
-ax.plot3D(x1,y1,z1, c = "blue", label = "elektron")
+ax.plot3D(x1,y1,z1,'-.', c = "blue", label = "elektron")
 ax.plot3D(x3,y3,z3, c = "red", label = "pozitron")
 ax.set_xlabel("x")
 ax.set_ylabel("y")
