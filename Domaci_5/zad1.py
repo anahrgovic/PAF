@@ -39,7 +39,7 @@ x3,y3,z3=p2.evolve_RK(20)
 
 
 ax = plt.axes(projection = "3d")
-ax.plot3D(x1,y1,z1,'-.', c = "blue", label = "elektron")
+ax.plot3D(x2,y2,z2,'-.', c = "blue", label = "elektron")
 ax.plot3D(x3,y3,z3, c = "red", label = "pozitron")
 ax.set_xlabel("x")
 ax.set_ylabel("y")
