@@ -6,12 +6,12 @@ au = 1.496e11
 day = 60*60*24
 year = 365.242*day
 
-sun = universe.Planet("Sun", 1.989e30, np.array((0.,0.)), np.array((0.,0.)))
-earth = universe.Planet("Earth", 5.9742e24, np.array((-1*au,0.)), np.array((0.,29783.)))
-mercury = universe.Planet("Mercury", 3.3e24, np.array((0,0.466*au)), np.array((-47362.,0.)))
-venus = universe.Planet("Venus", 4.8685e24, np.array((0.723*au,0.)), np.array((0.,35020.)))
-mars = universe.Planet("Mars", 6.417e23, np.array((0.,-1.666*au)), np.array((24007.,0.)))
-comet = universe.Planet("comet", 1e14, np.array((4.*au,-4.*au)), np.array((-20000.,-15000.)))
+sun = universe.Planet("Sun", 1.989e30, 0.696e9 ,np.array((0.,0.)), np.array((0.,0.)))
+earth = universe.Planet("Earth", 5.9742e24,0.637e6, np.array((-1*au,0.)), np.array((0.,29783.)))
+mercury = universe.Planet("Mercury", 3.3e24, 2.439e6,np.array((0,0.466*au)), np.array((-47362.,0.)))
+venus = universe.Planet("Venus", 4.8685e24,6.371e6, np.array((0.723*au,0.)), np.array((0.,35020.)))
+mars = universe.Planet("Mars", 6.417e23, 3.389e6, np.array((0.,-1.666*au)), np.array((24007.,0.)))
+comet = universe.Planet("comet", 1e14, 0.5e3, np.array((4.*au,4*au)), np.array((-20000.,-15000.)))
 ss = universe.Universe()
 ss.add_planet(sun)
 ss.add_planet(earth)
@@ -40,7 +40,7 @@ plt.title('x-y graf')
 plt.legend(loc="upper right")
 plt.show()
 
-fig,ax = plt.figure(figsize=(10, 10)), plt.axes(xlim=(-3e11, 3e11), ylim=(-3e11, 3e11))
+fig,ax = plt.figure(figsize=(10, 10)), plt.axes(xlim=(-10e11, 10e11), ylim=(-10e11, 10e11))
 
 line, = ax.plot([], [],'o',color="yellow")
 line1, = ax.plot([], [],'o',color="blue")

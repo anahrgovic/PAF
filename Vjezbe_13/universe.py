@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 class Planet:
-    def __init__(self, name,  m, r, v):
+    def __init__(self, name,  m, radius, r, v):
         self.name = name
         self.m    = m
         self.r    = r 
