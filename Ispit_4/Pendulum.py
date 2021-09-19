@@ -24,13 +24,13 @@ class Pendulum:
                 print('Unesen je mali kut otklona.')
 
 
-    def change_theta(self, radilist, theta):
-        self.theta = theta
+    def change_theta(self, radilist, theta0):
+        self.theta += theta0
         if radilist == "rad":
             print("Kut iznosi" ,self.theta, "radijana")
         elif radilist == "deg":
             print("Kut iznosi" ,self.theta, "stupnjeva")
-            self.theta = self.theta*math.pi/180
+            self.theta += theta0 *math.pi/180
     
 
     def reset(self):
