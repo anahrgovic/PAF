@@ -25,13 +25,12 @@ class Pendulum:
 
 
     def change_theta(self, radilist, theta0):
-        self.theta += theta0
         if radilist == "rad":
+            self.theta += theta0
             print("Kut iznosi" ,self.theta, "radijana")
         elif radilist == "deg":
-            print("Kut iznosi" ,self.theta, "stupnjeva")
             self.theta += theta0 *math.pi/180
-    
+            print("Kut iznosi" ,self.theta * (180/math.pi), "stupnjeva")
 
     def reset(self):
         del self.theta
@@ -78,6 +77,14 @@ class Pendulum:
 
     
     def period(self):
-        T=2*math.pi*math.sqrt(self.l/9.81)
+        T=0
+        theta0=self.theta
+        while True:
+            self.__oscillate()
+            T +=self.dt
+            if self.theta == theta0:
+                break
+            elif self.theta == -theta0:
+                break
         print(T)
         
