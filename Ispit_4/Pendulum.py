@@ -16,7 +16,7 @@ class Pendulum:
         self.t_=[]
         self.t_.append(self.t)
         self.v=0
-        self.k=0
+        #self.k=0
 
 
     def __kut(self,theta):
@@ -71,7 +71,7 @@ class Pendulum:
 
     def oscillate_ar(self, k, t):
         while self.t <= t:
-            self.a = ((self.k * self.v) / self.m -9.81) * math.sin(self.theta)
+            self.a = - (k * self.v/self.m) - 9.81 * math.sin(self.theta)
             self.v = self.v + self.a * self.dt
             self.theta = self.theta + self.v * self.dt
             self.t = self.t + self.dt
