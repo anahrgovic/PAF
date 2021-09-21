@@ -43,7 +43,7 @@ class Pendulum:
 
 
     def __oscillate(self):
-        self.a = -9.81 * math.cos(self.theta)
+        self.a = -9.81 * math.sin(self.theta)
         self.v = self.v + self.a * self.dt
         self.theta = self.theta + self.v * self.dt
         self.t = self.t + self.dt
@@ -51,6 +51,12 @@ class Pendulum:
         self.theta_.append(self.theta)
         self.t_.append(self.t)
     
+    def prt(self):
+        self.__oscillate()
+        print(self.a)
+        print(self.v)
+        print(self.theta)
+        print(self.t)
     
     def oscillate(self, t):
         while self.t <= t:

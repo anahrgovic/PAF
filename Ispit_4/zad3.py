@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import Pendulum as pnd
 
-p1=pnd.Pendulum(5,1,0.1,0.01)
+p1=pnd.Pendulum(0.01,1,0.1,0.01)
 p1.oscillate(5)
 
 plt.figure("pendulum")
