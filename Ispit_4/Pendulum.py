@@ -43,7 +43,7 @@ class Pendulum:
 
 
     def __oscillate(self):
-        self.alpha = -9.81 * math.sin(self.theta)
+        self.alpha = (-9.81 * math.sin(self.theta))/self.l
         self.omega = self.omega + self.alpha * self.dt
         self.theta = self.theta + self.omega * self.dt
         self.t = self.t + self.dt
@@ -71,7 +71,7 @@ class Pendulum:
 
     def oscillate_ar(self, k, t):
         while self.t <= t:
-            self.alpha = -(k * self.omega/self.m) - 9.81 * math.sin(self.theta)
+            self.alpha = -(self.omega*self.l)*(k/self.m) - 9.81 * math.sin(self.theta)
             self.omega = self.omega + self.alpha * self.dt
             self.theta = self.theta + self.omega * self.dt
             self.t += self.dt
@@ -91,6 +91,8 @@ class Pendulum:
         while True:
             self.__oscillate()
             T +=self.dt
-            if self.theta <= -self.theta*self.dt:
+            if self.theta < theta0*self.dt:
                 break
-        print(T)
+        print(4*T)
+
+        
